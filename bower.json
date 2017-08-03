@@ -2,7 +2,8 @@
   "name": "Carousel component",
   "private": true,
   "dependencies": {
-	"polymer": "Polymer/polymer#^2.0.0",
-    "iron-icons": "PolymerElements/iron-icons#2.0.1"
+    "polymer": "Polymer/polymer#^2.0.0",
+    "iron-icons": "PolymerElements/iron-icons#2.0.1",
+    "animate.css": "^3.5.2"
   }
 }

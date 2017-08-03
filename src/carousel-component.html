@@ -7,13 +7,21 @@
 	<template>
 		<!-- styles -->
 		<style>
+			
+			.hidden {
+				display: none;
+			}
+
 			.container {
 				display: flex;
 				align-items: center;
 				align-content: center;
 				justify-content: center;
 				position: relative;
-				height: 70vh;
+				height: var(--carrousel-weight,83vh);
+				overflow:hidden;
+				width: var(--carousel-width,80%);
+				margin: 20px auto;
 				box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 
 			}
@@ -28,7 +36,7 @@
 			.previous-button, .next-button {
 				align-self: center;
 				height: 100%;
-				width: 70px;
+				width: 100px;
 				position: absolute;
 				cursor: pointer;
 				align-items: center;
@@ -36,6 +44,8 @@
 				font-weight: bold;
 				transition: 0.8s;
 				justify-content: center;
+				background-color: rgba(66, 66, 66, .4);
+
 			}
 			
 
@@ -49,7 +59,7 @@
 			}
 
 			.previous-button:hover, .next-button:hover {
-				background-color: rgba(236, 239, 241, .6);
+				background-color: rgba(66, 66, 66, .9);
 				transition: 0.8s;
 			}
 
@@ -57,15 +67,15 @@
 				font-weight: bold;
 				align-self: center;
 				font-size: 1.2rem;
-				width: 50px;
-				height: 50px;
-				color:var(--icon-action-color,#37474F);
+				width: 100px;
+				height: 100%;
+				color:var(--icon-action-color,#FFF);
 			}
 			
 
 			.item-container {
 				height: 100%;
-				border:1px solid purple;
+		
 			}
 
 
@@ -75,17 +85,15 @@
 		<div class="container">
 
 			<div class="previous-button">
-				<iron-icon class="icon-action" icon="hardware:keyboard-arrow-left"></iron-icon>
+				<iron-icon class="icon-action" icon="hardware:keyboard-arrow-left" on-click="_previousItem"></iron-icon>
 			</div>
 
-			<div class="frame-container">	
-				<div class="item-container">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate doloribus laboriosam cum minima quis laudantium illum neque suscipit in, quaerat animi assumenda nulla tenetur sint veritatis dicta ad tempora rem.
-				</div>
+			<div class="frame-container">
+				<slot id="contents" name="content"></slot>
 			</div>
 
 			<div class="next-button">
-				<iron-icon class="icon-action"  icon="hardware:keyboard-arrow-right"></iron-icon>
+				<iron-icon class="icon-action"  icon="hardware:keyboard-arrow-right" on-click="_nextItem"></iron-icon>
 
 			</div>
 
@@ -105,9 +113,19 @@
 				static get is(){return 'carousel-component';}
 				static get properties(){
 					return {
-						index:{
+
+						actual:{
 							type:Number,
 							value:0
+						},
+
+						minIndex:{
+							type:Number,
+							value:0
+						},
+
+						maxIndex:{
+							type:Number
 						},
 
 						elements:{
@@ -117,6 +135,53 @@
 						
 					}
 
+				}
+
+				connectedCallback(){
+
+					super.connectedCallback();
+					this.elements = this.$.contents.assignedNodes();
+					this.maxIndex = this.elements.length -1
+					
+					for(let i in this.elements){
+						this.elements[i].elementPosition = Number(i);
+					}
+					
+					this.elements[0].classList.toggle('hidden');
+				}
+
+
+				_nextItem(event){
+					this.elements[this.actual].classList.toggle('hidden');
+					this.elements[this.actual].classList.toggle('fadeIn');
+
+					this.actual+=1;
+
+					if (this.actual > this.maxIndex){
+						this.actual = 0;
+						this.elements[this.actual].classList.toggle('hidden');
+
+					}else {
+						this.elements[this.actual].classList.toggle('hidden');
+						
+					}
+				}
+
+				_previousItem(event){
+					if(this.actual == 0){
+						this.elements[this.actual].classList.toggle('hidden');
+						this.actual = this.maxIndex;
+						this.elements[this.actual].classList.toggle('hidden');
+
+						return 
+					}else {
+						this.elements[this.actual].classList.toggle('hidden');
+						this.actual-=1;
+						this.elements[this.actual].classList.toggle('hidden');
+					
+
+
+					}
 				}
 
 
