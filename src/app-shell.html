@@ -1,0 +1,25 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="carousel-component.html">
+
+
+<dom-module id="app-shell">
+	<template>
+		<!-- Main container goes here nigga -->
+		<h1>Im a modafuckin app shell</h1>
+		<carousel-component>
+			<p slot="previous">atras</p>
+			<p slot="next">adelante</p>
+		</carousel-component>
+	</template>
+
+	<script>
+		(function APPSHELL(customElements){
+			class AppShell extends Polymer.Element {
+				static get is(){return 'app-shell';}
+				
+
+			}
+			customElements.define(AppShell.is,AppShell)
+		})(window.customElements);
+	</script>
+</dom-module>

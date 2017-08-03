@@ -1,0 +1,130 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-icons/hardware-icons.html">
+
+
+<dom-module id="carousel-component">
+	
+	<template>
+		<!-- styles -->
+		<style>
+			.container {
+				display: flex;
+				align-items: center;
+				align-content: center;
+				justify-content: center;
+				position: relative;
+				height: 70vh;
+				box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+			}
+
+			.frame-container {
+				height: 100%;
+				width: 100%;
+				align-self: center;
+				flex: 0 0 100%;
+			}
+
+			.previous-button, .next-button {
+				align-self: center;
+				height: 100%;
+				width: 70px;
+				position: absolute;
+				cursor: pointer;
+				align-items: center;
+				display: flex;
+				font-weight: bold;
+				transition: 0.8s;
+				justify-content: center;
+			}
+			
+
+			.previous-button {
+				left: 0;
+			}
+
+			.next-button {
+				right: 0;
+
+			}
+
+			.previous-button:hover, .next-button:hover {
+				background-color: rgba(236, 239, 241, .6);
+				transition: 0.8s;
+			}
+
+			.icon-action{
+				font-weight: bold;
+				align-self: center;
+				font-size: 1.2rem;
+				width: 50px;
+				height: 50px;
+				color:var(--icon-action-color,#37474F);
+			}
+			
+
+			.item-container {
+				height: 100%;
+				border:1px solid purple;
+			}
+
+
+		</style>
+		
+
+		<div class="container">
+
+			<div class="previous-button">
+				<iron-icon class="icon-action" icon="hardware:keyboard-arrow-left"></iron-icon>
+			</div>
+
+			<div class="frame-container">	
+				<div class="item-container">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate doloribus laboriosam cum minima quis laudantium illum neque suscipit in, quaerat animi assumenda nulla tenetur sint veritatis dicta ad tempora rem.
+				</div>
+			</div>
+
+			<div class="next-button">
+				<iron-icon class="icon-action"  icon="hardware:keyboard-arrow-right"></iron-icon>
+
+			</div>
+
+		</div>
+			
+		
+
+	</template>
+
+
+	<script>
+		(function CarouselIIFE(customElements){
+			'use strict';
+
+			class CarouselComponent extends Polymer.Element {
+
+				static get is(){return 'carousel-component';}
+				static get properties(){
+					return {
+						index:{
+							type:Number,
+							value:0
+						},
+
+						elements:{
+							type:Array,
+							value:[]
+						}
+						
+					}
+
+				}
+
+
+			}
+
+			customElements.define(CarouselComponent.is,CarouselComponent);
+		})(window.customElements);
+	</script>
+
+
+</dom-module>
