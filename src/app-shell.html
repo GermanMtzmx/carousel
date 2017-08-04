@@ -1,14 +1,92 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="carousel-component.html">
+<link rel="stylesheet" href="../bower_components/animate.css/animate.css">
 
 
 <dom-module id="app-shell">
 	<template>
+
+
+		<style>
+			.content {
+				width: 100%;
+				height: 90vh;
+				font-size: 1.5rem;
+				line-height: 60px;
+				text-align: justify;
+				font-family: sans-serif;
+				display: block;
+
+
+
+			}
+
+			.hidden {
+				display: none;
+				opacity: 0;
+				transition:opacity 1s linear;
+
+
+
+
+			}
+
+			.visible {
+				opacity: 1;
+				transition:opacity 1s linear;
+
+			}
+
+			.demo-title-container {
+				margin: 0;
+				display: flex;
+				align-content: center;
+				justify-content: center;
+				text-transform: uppercase;
+				font-weight: 6rem;
+				font-size: 3rem;
+				background-color: #26C6DA;
+				height: 90px;
+				color: #FFF;
+				box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+
+			}
+
+			.title {
+				align-self: center;
+				display: flex;
+				margin:0;
+				font-weight: bold;
+				font-family: sans-serif;
+			}
+			.prro {
+				font-size: 80px;
+				text-align: center;
+			}
+
+		</style>
 		<!-- Main container goes here nigga -->
-		<h1>Im a modafuckin app shell</h1>
+		<div class="demo-title-container">
+			<p class="title">Carousel demo</p>
+		</div>
 		<carousel-component>
-			<p slot="previous">atras</p>
-			<p slot="next">adelante</p>
+
+			<img class="content  hidden" src="http://www.hdwallpapers.in/download/the_legend_of_zelda_breath_of_the_wild_4k-2560x1440.jpg" slot="content" alt="img">
+			<img class="content  hidden" src="http://i.imgur.com/jIMTKD6.jpg" slot="content" alt="img">
+			<img src="https://images7.alphacoders.com/644/644731.jpg" class="content hidden" alt="oie ci" slot="content">
+						
+			<iframe class="content hidden" slot="content" src="https://www.youtube.com/embed/315qJJ3Y9uA">
+			</iframe>
+			<h1 class="content hidden prro" slot="content">Oie tu dale next para ver el pack papu</h1>
+			<h1 class="content hidden prro" slot="content">Otro ....</h1>
+			<h1 class="content hidden prro" slot="content">Otro más ...</h1>
+			<h1 class="content hidden prro" slot="content">ya casi llegas prro...</h1>
+			<h1 class="content hidden prro" slot="content">ultimo click papu ...</h1>
+
+			<img src="https://ugc.kn3.net/i/origin/http://estoybailando.com/wp-content/uploads/2014/09/Freddy-Mercury.gif" alt="" class="content hidden" slot="content">
+
+
+
 		</carousel-component>
 	</template>
 
