@@ -1,5 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/iron-icons/hardware-icons.html">
+<link rel="import" href="polymer/lib/mixins/gesture-event-listeners.html">
 
 
 <dom-module id="carousel-component">
@@ -10,7 +11,13 @@
 			
 			.hidden {
 				display: none;
+
 			}
+
+
+
+
+
 
 			.container {
 				display: flex;
@@ -85,7 +92,7 @@
 		<div class="container">
 
 			<div class="previous-button">
-				<iron-icon class="icon-action" icon="hardware:keyboard-arrow-left" on-click="_previousItem"></iron-icon>
+				<iron-icon class="icon-action" icon="hardware:keyboard-arrow-left" on-tap="_previousItem"></iron-icon>
 			</div>
 
 			<div class="frame-container">
@@ -93,7 +100,7 @@
 			</div>
 
 			<div class="next-button">
-				<iron-icon class="icon-action"  icon="hardware:keyboard-arrow-right" on-click="_nextItem"></iron-icon>
+				<iron-icon class="icon-action"  icon="hardware:keyboard-arrow-right" on-tap="_nextItem"></iron-icon>
 
 			</div>
 
@@ -108,7 +115,7 @@
 		(function CarouselIIFE(customElements){
 			'use strict';
 
-			class CarouselComponent extends Polymer.Element {
+			class CarouselComponent extends Polymer.GestureEventListeners(Polymer.Element) {
 
 				static get is(){return 'carousel-component';}
 				static get properties(){
@@ -119,10 +126,6 @@
 							value:0
 						},
 
-						minIndex:{
-							type:Number,
-							value:0
-						},
 
 						maxIndex:{
 							type:Number
@@ -148,12 +151,22 @@
 					}
 					
 					this.elements[0].classList.toggle('hidden');
+
+
+
+
+
+
 				}
 
 
 				_nextItem(event){
+			
+
 					this.elements[this.actual].classList.toggle('hidden');
-					this.elements[this.actual].classList.toggle('fadeIn');
+
+
+		
 
 					this.actual+=1;
 
@@ -161,24 +174,42 @@
 						this.actual = 0;
 						this.elements[this.actual].classList.toggle('hidden');
 
+
+
+
+
 					}else {
+
 						this.elements[this.actual].classList.toggle('hidden');
+
+
+
 						
 					}
 				}
 
 				_previousItem(event){
 					if(this.actual == 0){
+
+
 						this.elements[this.actual].classList.toggle('hidden');
+
+
 						this.actual = this.maxIndex;
 						this.elements[this.actual].classList.toggle('hidden');
 
-						return 
+
+
 					}else {
 						this.elements[this.actual].classList.toggle('hidden');
+
+
+
+
 						this.actual-=1;
 						this.elements[this.actual].classList.toggle('hidden');
-					
+
+
 
 
 					}

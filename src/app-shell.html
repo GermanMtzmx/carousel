@@ -15,12 +15,26 @@
 				line-height: 60px;
 				text-align: justify;
 				font-family: sans-serif;
+				display: block;
+
 
 
 			}
 
 			.hidden {
 				display: none;
+				opacity: 0;
+				transition:opacity 1s linear;
+
+
+
+
+			}
+
+			.visible {
+				opacity: 1;
+				transition:opacity 1s linear;
+
 			}
 
 			.demo-title-container {
@@ -60,7 +74,9 @@
 			<img class="content  hidden" src="http://www.hdwallpapers.in/download/the_legend_of_zelda_breath_of_the_wild_4k-2560x1440.jpg" slot="content" alt="img">
 			<img class="content  hidden" src="http://i.imgur.com/jIMTKD6.jpg" slot="content" alt="img">
 			<img src="https://images7.alphacoders.com/644/644731.jpg" class="content hidden" alt="oie ci" slot="content">
-			
+						
+			<iframe class="content hidden" slot="content" src="https://www.youtube.com/embed/315qJJ3Y9uA">
+			</iframe>
 			<h1 class="content hidden prro" slot="content">Oie tu dale next para ver el pack papu</h1>
 			<h1 class="content hidden prro" slot="content">Otro ....</h1>
 			<h1 class="content hidden prro" slot="content">Otro más ...</h1>
