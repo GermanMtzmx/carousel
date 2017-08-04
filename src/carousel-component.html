@@ -9,14 +9,28 @@
 		<!-- styles -->
 		<style>
 			
-			.hidden {
-				display: none;
+			::slotted(.content) {
+				width: 100%;
+				height: 90vh;
+				font-size: 1.5rem;
+				line-height: 60px;
+				text-align: justify;
+				font-family: sans-serif;
+				display: block;
+
+
 
 			}
 
+			::slotted(.hidden) {
+				display: none;
+				opacity: 0;
+				transition:opacity 1s linear;
 
 
 
+
+			}
 
 
 			.container {
